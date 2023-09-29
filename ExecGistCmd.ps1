@@ -1,5 +1,6 @@
 # 執行 gist 上的 cmd 代碼
 function ExecGistCmd {
+    [Alias("ecgist")]
     param (
         [Parameter(Position = 0, ParameterSetName = "", Mandatory)]
         [string] $GistId,

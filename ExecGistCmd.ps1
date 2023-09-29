@@ -49,12 +49,13 @@ function ExecGistCmd {
     $cmdStr = @()
     if ($content -notmatch "^\s*title\b") { $cmdStr += "title $description" }
     if ($ArgumentList) { $argument = ' ' + ($ArgumentList -join " ") }
-    $cmdStr += [IO.Path]::GetFullPath($filepath) + $argument
+    $comannd = [IO.Path]::GetFullPath($filepath) + $argument
+    $cmdStr += $comannd
     if ($Pause) { $cmdStr += "Pause" }
     $cmdStr = $cmdStr -join "&"
     if ($RunAsAdministrator) { $verb = 'RunAs' } else { $verb = 'Open' }
 
     # 執行檔案
-    Write-Host $cmdStr -ForegroundColor DarkGray
+    # Write-Host $comannd -ForegroundColor DarkGray
     Start-Process 'cmd.exe' -ArgumentList "/c $cmdStr" -Verb $verb
 } # ExecGistCmd 6a290cc77609c13a899b9a6e0801d008 -Pause
